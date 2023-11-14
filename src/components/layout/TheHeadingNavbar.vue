@@ -3,9 +3,9 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
     <div class="container-fluid">
-      <router-link to="/" class="navbar-brand">
+      <a class="navbar-brand" href="#">
         <img src="@/assets/ssafy_logo.png" class="rounded mx-auto d-block" alt="..." />
-      </router-link>
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -49,7 +49,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <router-link to="/board" class="nav-link">게시판</router-link>
+            <a class="nav-link" href="#">게시판</a>
           </li>
         </ul>
         <form class="d-flex" role="search">

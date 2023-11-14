@@ -4,8 +4,8 @@
   <div class="login-wrapper">
     <h2>Login</h2>
     <form method="post" id="login-form">
-      <input type="text" name="userId" placeholder="ID" />
-      <input type="text" name="userPwd" placeholder="PASSWORD" />
+      <input type="text" name="userId" placeholder="ID" /><br />
+      <input type="text" name="userPwd" placeholder="PASSWORD" /><br />
       <input type="submit" value="Login" />
     </form>
   </div>
@@ -40,5 +40,14 @@ div {
   margin-bottom: 16px;
   border-radius: 6px;
   background-color: white;
+}
+#login-form > input::placeholder {
+  color: gainsboro;
+}
+#login-form > input[type="submit"] {
+  color: aliceblue;
+  font-size: 16px;
+  background-color: rgb(41, 88, 130);
+  margin-top: 20px;
 }
 </style>
