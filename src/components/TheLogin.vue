@@ -3,8 +3,8 @@
 <template>
   <div class="login-wrapper">
     <h2>Login</h2>
-    <form method="post" id="login-form">
-      <input type="text" name="userId" placeholder="ID" /><br />
+    <form @submit.prevent="login" method="post" id="login-form">
+      <input v-model="user" type="text" name="userId" placeholder="ID" /><br />
       <input type="text" name="userPwd" placeholder="PASSWORD" /><br />
       <input type="submit" value="Login" />
     </form>
