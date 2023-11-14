@@ -1,15 +1,58 @@
-<script setup></script>
-
 <template>
   <div class="login-wrapper">
     <h2>Login</h2>
-    <form @submit.prevent="login" method="post" id="login-form">
-      <input v-model="user" type="text" name="userId" placeholder="ID" /><br />
-      <input type="text" name="userPwd" placeholder="PASSWORD" /><br />
+    <form @submit.prevent="login"
+          method="post" id="login-form">
+      <input v-model="userId" type="text" name="userId" placeholder="ID" required/><br />
+      <input v-model="userPassword" type="text" name="userPassword" placeholder="PASSWORD" required/><br />
       <input type="submit" value="Login" />
     </form>
   </div>
 </template>
+
+<script>
+import { pinia } from "../store";
+
+export default {
+  data() {
+    return {
+      userId: "",
+      userPassword: ""
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        const response = await this.$axios.post('http://localhost:8080/member/login', {
+          userId: this.userId,
+          userPassword: this.userPassword,
+        });
+
+        const token = response.data.token;
+
+        pinia.store.setToken(token);
+
+        this.$router.push('/home');
+      } catch (error) {
+        console.error('Login failed: ', error);
+      }
+      // this.$axios.post("http://localhost:8080/member/login", {
+      //   userId: this.userId,
+      //   userPassword: this.userPassword
+      // })
+      //   .then(response => {
+      //     const token = response.data.token;
+      //     this.$store.commit("setToken", token);
+      //     this.$router.push("/home");
+      //   })
+      //   .catch(error => {
+      //     console.error("Login failed: ", error);
+      //   })
+    }
+  },
+};
+</script>
+
 
 <style scoped>
 * {
