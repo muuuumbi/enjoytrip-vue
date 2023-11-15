@@ -1,14 +1,33 @@
-import { createPinia } from "pinia";
-
+import { createPinia, defineStore } from "pinia";
+import axios from "axios";
 export const pinia = createPinia();
 
-export const store = pinia.createStore({
-    state: () => ({
-        token: null,
-    }),
-    actions: {
-        setToken(token) {
-            this.token = token;
-        },
+export const memberStore = defineStore({
+  id: "member",
+  state: () => ({
+    token: null,
+  }),
+  actions: {
+    setToken(token) {
+      this.token = token;
     },
+    async login({ userId, userPassword }) {
+      try {
+        const response = await axios.post("http://localhost:8080/member/login", {
+          userId: userId,
+          userPassword: userPassword,
+        });
+        console.log(response);
+        const token = response.data.token;
+
+        this.setToken(token);
+
+        return true;
+      } catch (error) {
+        console.error("Login failed: ", error);
+
+        return false;
+      }
+    },
+  },
 });

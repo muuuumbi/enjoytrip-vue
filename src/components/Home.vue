@@ -1,5 +1,5 @@
 <script setup>
-import TheHeadingNavbar from "../layout/TheHeadingNavbar.vue";
+import TheHeadingNavbar from "../components/layout/TheHeadingNavbar.vue";
 </script>
 
 <template>

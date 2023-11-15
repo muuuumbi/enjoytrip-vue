@@ -1,58 +1,55 @@
 <template>
   <div class="login-wrapper">
     <h2>Login</h2>
-    <form @submit.prevent="login"
-          method="post" id="login-form">
-      <input v-model="userId" type="text" name="userId" placeholder="ID" required/><br />
-      <input v-model="userPassword" type="text" name="userPassword" placeholder="PASSWORD" required/><br />
+    <button @click="test">asdfasdf</button>
+    <form @submit.prevent="login" method="post" id="login-form">
+      <input v-model="userId" type="text" name="userId" placeholder="ID" required /><br />
+      <input
+        v-model="userPassword"
+        type="text"
+        name="userPassword"
+        placeholder="PASSWORD"
+        required
+      /><br />
       <input type="submit" value="Login" />
     </form>
   </div>
 </template>
 
 <script>
-import { pinia } from "../store";
-
+import { memberStore } from "../store";
+import { mapStores } from "pinia";
 export default {
   data() {
     return {
       userId: "",
-      userPassword: ""
+      userPassword: "",
     };
   },
+  computed: {
+    ...mapStores(memberStore),
+  },
   methods: {
+    test() {
+      console.log(memberStore);
+    },
+
     async login() {
-      try {
-        const response = await this.$axios.post('http://localhost:8080/member/login', {
-          userId: this.userId,
-          userPassword: this.userPassword,
-        });
+      const success = await this.memberStore.login({
+        userId: this.userId,
+        userPassword: this.userPassword,
+      });
 
-        const token = response.data.token;
-
-        pinia.store.setToken(token);
-
-        this.$router.push('/home');
-      } catch (error) {
-        console.error('Login failed: ', error);
+      if (success) {
+        this.$router.push("/home");
+      } else {
+        con;
+        console.log("로그인 실패");
       }
-      // this.$axios.post("http://localhost:8080/member/login", {
-      //   userId: this.userId,
-      //   userPassword: this.userPassword
-      // })
-      //   .then(response => {
-      //     const token = response.data.token;
-      //     this.$store.commit("setToken", token);
-      //     this.$router.push("/home");
-      //   })
-      //   .catch(error => {
-      //     console.error("Login failed: ", error);
-      //   })
-    }
+    },
   },
 };
 </script>
-
 
 <style scoped>
 * {

@@ -23,12 +23,6 @@
           style="--bs-scroll-height: 100px"
         >
           <li class="nav-item">
-            <a class="nav-link" href="#">마이캠퍼스</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">강의실</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#">커뮤니티</a>
           </li>
           <li class="nav-item dropdown">
@@ -41,12 +35,6 @@
             >
               HELP DESK
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">공지사항</a></li>
-              <li><a class="dropdown-item" href="#">FAQ</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">학사규정</a></li>
-            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">게시판</a>

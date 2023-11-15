@@ -6,7 +6,8 @@ import LoginView from "./views/LoginView.vue";
 <template>
   <!-- <RouterLink to="/login">login</RouterLink>
   <RouterView /> -->
-  <LoginView />
+  <!-- <LoginView /> -->
+  <router-view></router-view>
 </template>
 
 <style scoped>
