@@ -11,10 +11,10 @@ export const memberStore = defineStore({
     setToken(token) {
       this.token = token;
     },
-    async login({ userId, userPassword }) {
+    async login({ emailId, userPassword }) {
       try {
         const response = await axios.post("http://localhost:8080/member/login", {
-          userId: userId,
+          emailId: emailId,
           userPassword: userPassword,
         });
         console.log(response);

@@ -1,9 +1,8 @@
 <template>
   <div class="login-wrapper">
     <h2>Login</h2>
-    <button @click="test">asdfasdf</button>
     <form @submit.prevent="login" method="post" id="login-form">
-      <input v-model="userId" type="text" name="userId" placeholder="ID" required /><br />
+      <input v-model="emailId" type="text" name="emailId" placeholder="EMAIL" required /><br />
       <input
         v-model="userPassword"
         type="text"
@@ -22,7 +21,7 @@ import { mapStores } from "pinia";
 export default {
   data() {
     return {
-      userId: "",
+      emailId: "",
       userPassword: "",
     };
   },
@@ -30,13 +29,9 @@ export default {
     ...mapStores(memberStore),
   },
   methods: {
-    test() {
-      console.log(memberStore);
-    },
-
     async login() {
       const success = await this.memberStore.login({
-        userId: this.userId,
+        emailId: this.emailId,
         userPassword: this.userPassword,
       });
 
